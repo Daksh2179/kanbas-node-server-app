@@ -1,0 +1,32 @@
+{
+  "type": "module",
+  "name": "kanbas-node-server-app",
+  "version": "1.0.0",
+  "description": "HTTP server for kanbas application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Daksh2179/kanbas-node-server-app"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "Server",
+    "HTTP",
+    "Web",
+    "Development",
+    "CS5610"
+  ],
+  "author": "Daksh Patel",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-session": "^1.18.1"
+  }
+}
