@@ -1,7 +1,7 @@
-import Hello from './hello.js'
-import express from 'express'
-import Lab5 from './Lab5/index.js'
-import UserRoutes from './Kanbas/Users/routes.js'
+import Hello from './Hello.js';
+import express from 'express';
+import Lab5 from './Lab5/index.js';
+import UserRoutes from './Kanbas/Users/routes.js';
 import cors from "cors";
 import session from "express-session";
 import "dotenv/config";
