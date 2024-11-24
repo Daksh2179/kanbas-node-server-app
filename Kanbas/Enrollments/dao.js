@@ -1,26 +1,16 @@
 import Database from "../Database/index.js";
 
-// The enrollments array from Database
-let { enrollments, courses } = Database;
-
-export function createEnrollment(userId, courseId) {
-  const newEnrollment = { _id: Date.now(), user: userId, course: courseId };
-  enrollments = [...enrollments, newEnrollment];  // Add new enrollment to the list
-  return newEnrollment;
+export function enrollUserInCourse(userId, courseId) {
+  const { enrollments } = Database;
+  enrollments.push({ _id: Date.now(), user: userId, course: courseId });
 }
 
-export const findEnrollmentsByUserId = (userId) => {
-  return enrollments.filter((enrollment) => enrollment.user === userId);
-};
-
-export const findEnrollmentsByCourseId = (courseId) => {
-  return enrollments.filter((enrollment) => enrollment.course === courseId);
-};
-
-export const deleteEnrollment = (userId, courseId) => {
-  enrollments = enrollments.filter(
-    (enrollment) => !(enrollment.user === userId && enrollment.course === courseId)
+export function unenrollUserFromCourse(userId, courseId) {
+  Database.enrollments = Database.enrollments.filter(
+    (enrollment) => enrollment.user !== userId || enrollment.course !== courseId
   );
-};
+}
 
-export const findAllEnrollments = () => enrollments;
+export function getEnrollments() {
+  return Database.enrollments;
+}

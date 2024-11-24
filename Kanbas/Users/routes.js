@@ -2,127 +2,58 @@ import * as dao from "./dao.js";
 import * as courseDao from "../Courses/dao.js";
 import * as enrollmentsDao from "../Enrollments/dao.js";
 
+// let currentUser = null;
+
 export default function UserRoutes(app) {
-  const createUser = (req, res) => { 
-    try {
-      const newUser = dao.createUser(req.body);
-      res.json(newUser);
-    } catch (error) {
-      res.status(500).json({ message: "Error creating user", error: error.message });
-    }
-  };
-
-  const deleteUser = (req, res) => { 
-    try {
-      const userId = req.params.userId;
-      dao.deleteUser(userId);
-      res.sendStatus(200);
-    } catch (error) {
-      res.status(500).json({ message: "Error deleting user", error: error.message });
-    }
-  };
-
-  const findAllUsers = (req, res) => { 
-    try {
-      const users = dao.findAllUsers();
-      res.json(users);
-    } catch (error) {
-      res.status(500).json({ message: "Error finding users", error: error.message });
-    }
-  };
-
-  const findUserById = (req, res) => { 
-    try {
-      const userId = req.params.userId;
-      const user = dao.findUserById(userId);
-      if (user) {
-        res.json(user);
-      } else {
-        res.status(404).json({ message: "User not found" });
-      }
-    } catch (error) {
-      res.status(500).json({ message: "Error finding user", error: error.message });
-    }
-  };
-
-  const updateUser = (req, res) => {
-    try {
-      const userId = req.params.userId;
-      const userUpdates = req.body;
-      const updatedUser = dao.updateUser(userId, userUpdates);
-      req.session["currentUser"] = updatedUser;
-      res.json(updatedUser);
-    } catch (error) {
-      res.status(500).json({ message: "Error updating user", error: error.message });
-    }
+  const createUser = (req, res) => { };
+  const deleteUser = (req, res) => { };
+  const findAllUsers = (req, res) => { };
+  const findUserById = (req, res) => { };
+  
+  const updateUser = (req, res) => { 
+    const userId = req.params.userId;
+    const userUpdates = req.body;
+    dao.updateUser(userId, userUpdates);
+    const currentUser = dao.findUserById(userId);
+    req.session["currentUser"] = currentUser;
+    res.json(currentUser);
   };
 
   const signup = (req, res) => { 
-    try {
-      const existingUser = dao.findUserByUsername(req.body.username);
-      if (existingUser) {
-        return res.status(400).json({ message: "Username already in use" });
-      }
-      const currentUser = dao.createUser(req.body);
-      req.session["currentUser"] = currentUser;
-      res.json(currentUser);
-    } catch (error) {
-      res.status(500).json({ message: "Signup error", error: error.message });
+    const user = dao.findUserByUsername(req.body.username);
+    if (user) {
+      res.status(400).json(
+        { message: "Username already in use" });
+      return;
     }
+    const currentUser = dao.createUser(req.body);
+    req.session["currentUser"] = currentUser;
+    res.json(currentUser);
   };
 
   const signin = (req, res) => {
-    try {
-      console.log('Request headers:', req.headers);
-      console.log('Request body:', req.body);
-      console.log('Content-Type:', req.headers['content-type']);
-  
-      const { username, password } = req.body;
-      
-      if (!username || !password) {
-        console.log('Missing credentials:', { username: !!username, password: !!password });
-        return res.status(400).json({ 
-          message: "Username and password are required",
-          received: { username: !!username, password: !!password }
-        });
-      }
-  
-      const currentUser = dao.findUserByCredentials(username, password);
-      console.log('Found user:', currentUser ? 'Yes' : 'No');
-      
-      if (currentUser) {
-        req.session["currentUser"] = currentUser;
-        console.log('Session set:', req.session);
-        return res.json(currentUser);
-      } else {
-        return res.status(401).json({ 
-          message: "Invalid username or password",
-          debug: { attemptedUsername: username }
-        });
-      }
-    } catch (error) {
-      console.error('Signin error:', error);
-      return res.status(500).json({ 
-        message: "Internal server error", 
-        error: error.message,
-        stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
-      });
+    const { username, password } = req.body;
+    const currentUser = dao.findUserByCredentials(username, password);
+
+    if (currentUser) {
+      req.session["currentUser"] = currentUser;
+      res.json(currentUser);
+    } else {
+      res.status(401).json({ message: "Unable to login. Try again later." });
     }
   };
+
 
   const signout = (req, res) => {
-    try {
-      req.session.destroy();
-      res.sendStatus(200);
-    } catch (error) {
-      res.status(500).json({ message: "Signout error", error: error.message });
-    }
+    req.session.destroy();
+    res.sendStatus(200);
   };
 
-  const profile = (req, res) => {
+  const profile = async (req, res) => {
     const currentUser = req.session["currentUser"];
     if (!currentUser) {
-      return res.sendStatus(401);
+      res.sendStatus(401);
+      return;
     }
     res.json(currentUser);
   };
@@ -142,21 +73,18 @@ export default function UserRoutes(app) {
   };
 
   const createCourse = (req, res) => {
-    try {
-      const currentUser = req.session["currentUser"];
-      if (!currentUser) {
-        return res.sendStatus(401);
-      }
-      const newCourse = courseDao.createCourse(req.body);
-      enrollmentsDao.enrollUserInCourse(currentUser._id, newCourse._id);
-      res.json(newCourse);
-    } catch (error) {
-      res.status(500).json({ message: "Error creating course", error: error.message });
-    }
+    console.log(req);
+    const currentUser = req.session["currentUser"];
+    console.log(currentUser);
+    const newCourse = courseDao.createCourse(req.body);
+    enrollmentsDao.enrollUserInCourse(currentUser._id, newCourse._id);
+    res.json(newCourse);
   };
 
-  app.post("/api/users/current/courses", createCourse);
+
   app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
+  
+  app.post("/api/users/current/courses", createCourse);
 
   app.post("/api/users", createUser);
   app.get("/api/users", findAllUsers);

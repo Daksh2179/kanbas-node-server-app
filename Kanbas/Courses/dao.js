@@ -5,16 +5,27 @@ export function findAllCourses() {
 }
 
 export function findCoursesForEnrolledUser(userId) {
-  const { enrollments, courses } = Database;
-  
-  // Ensure enrollments is defined (fallback to an empty array if undefined)
-  const validEnrollments = enrollments || [];
-  
-  // Find courses for the enrolled user
-  return courses.filter(course => 
-    validEnrollments.some(enrollment => 
-      enrollment.user === userId && enrollment.course === course._id
+  const { courses, enrollments } = Database;
+  const enrolledCourses = courses.filter((course) =>
+    enrollments.some(
+      (enrollment) =>
+        enrollment.user === userId && enrollment.course === course._id
     )
+  );
+  return enrolledCourses;
+}
+
+export function createCourse(course) {
+  const newCourse = { ...course, _id: Date.now().toString() };
+  Database.courses = [...Database.courses, newCourse];
+  return newCourse;
+}
+
+export function deleteCourse(courseId) {
+  const { courses, enrollments } = Database;
+  Database.courses = courses.filter((course) => course._id !== courseId);
+  Database.enrollments = enrollments.filter(
+    (enrollment) => enrollment.course !== courseId
   );
 }
 

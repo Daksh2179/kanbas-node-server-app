@@ -1,6 +1,6 @@
 import coursesData from "./courses.js";
 import modulesData from "./modules.js"; 
-import enrollmentData from "./enrollment.js";
+import enrollmentData from "./enrollments.js";
 import userData from "./users.js";
 import assignmentData from "./assignments.js";
 

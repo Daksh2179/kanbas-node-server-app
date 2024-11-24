@@ -1,6 +1,6 @@
 export default [
     {
-      "course_id": "1234",
+      "_id": "1234",
       "name": "CS1234 React JS",
       "number": "CS1234",
       "startDate": "2023-01-10",
@@ -11,7 +11,7 @@ export default [
       "image": "reactjs.webp"
     },
     {
-      "course_id": "5610",
+      "_id": "5610",
       "name": "CS5610 Web Development",
       "number": "CS5610",
       "startDate": "2023-01-10",
@@ -23,7 +23,7 @@ export default [
 
     },
     {
-      "course_id": "5717",
+      "_id": "5717",
       "name": "CS5717 Game Development",
       "number": "CS5717",
       "startDate": "2023-01-10",
@@ -35,7 +35,7 @@ export default [
 
     },
     {
-      "course_id": "5801",
+      "_id": "5801",
       "name": "CS5801 Cloud Computing",
       "number": "CS5801",
       "startDate": "2023-01-10",
@@ -47,7 +47,7 @@ export default [
 
     },
     {
-      "course_id": "5010",
+      "_id": "5010",
       "name": "CS5010 Programming Design Paradigm",
       "number": "CS5010",
       "startDate": "2023-01-10",
@@ -58,7 +58,7 @@ export default [
       "image": "pdplogo.png"
     },
     {
-      "course_id": "5890",
+      "_id": "5890",
       "name": "CS5890 Artificial Intelligence",
       "number": "CS5890",
       "startDate": "2023-01-10",
@@ -69,7 +69,7 @@ export default [
       "image": "ai.jpg"
     },
     {
-      "course_id": "5900",
+      "_id": "5900",
       "name": "CS5900 Machine Learning",
       "number": "CS5900",
       "startDate": "2023-01-10",
@@ -80,7 +80,7 @@ export default [
       "image": "ml.jpg"
     },
     {
-      "course_id": "6150",
+      "_id": "6150",
       "name": "CS6150 App Development",
       "number": "CS6150",
       "startDate": "2023-01-10",

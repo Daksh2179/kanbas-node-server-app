@@ -1,6 +1,6 @@
 export default [
     {
-      "asn_id": "a1",
+      "_id": "a1",
       "name": "Assignment 1: Introduction to React",
       "description": "Complete a basic React application.",
       "points": 100,
@@ -13,7 +13,7 @@ export default [
       "course": "1234"
     },
     {
-      "asn_id": "a2",
+      "_id": "a2",
       "name": "Assignment 2: Advanced React Components",
       "description": "Create reusable components and use context API.",
       "points": 150,
@@ -26,7 +26,7 @@ export default [
       "course": "1234"
     },
     {
-      "asn_id": "a3",
+      "_id": "a3",
       "name": "Assignment 3: Final Project - Full Stack App",
       "description": "Develop a full stack web application using React and Node.js.",
       "points": 200,
@@ -39,7 +39,7 @@ export default [
       "course": "1234"
     },
     {
-      "asn_id": "a4",
+      "_id": "a4",
       "name": "Assignment 1: Web Development Basics",
       "description": "Complete the HTML/CSS exercises.",
       "points": 100,
@@ -52,7 +52,7 @@ export default [
       "course": "5610"
     },
     {
-      "asn_id": "a5",
+      "_id": "a5",
       "name": "Assignment 2: JavaScript Functions",
       "description": "Create JavaScript functions for common tasks.",
       "points": 150,
@@ -65,7 +65,7 @@ export default [
       "course": "5610"
     },
     {
-      "asn_id": "a6",
+      "_id": "a6",
       "name": "Assignment 3: Web App Development",
       "description": "Develop a single-page application using React.",
       "points": 200,
@@ -78,7 +78,7 @@ export default [
       "course": "5610"
     },
     {
-      "asn_id": "a7",
+      "_id": "a7",
       "name": "Assignment 1: Game Basics",
       "description": "Implement a simple 2D game.",
       "points": 100,
@@ -91,7 +91,7 @@ export default [
       "course": "5717"
     },
     {
-      "asn_id": "a8",
+      "_id": "a8",
       "name": "Assignment 2: Game Physics",
       "description": "Implement basic physics in a game.",
       "points": 150,
@@ -104,7 +104,7 @@ export default [
       "course": "5717"
     },
     {
-      "asn_id": "a9",
+      "_id": "a9",
       "name": "Assignment 3: Game UI",
       "description": "Create a user interface for the game.",
       "points": 200,
@@ -117,7 +117,7 @@ export default [
       "course": "5717"
     },
     {
-      "asn_id": "a10",
+      "_id": "a10",
       "name": "Assignment 1: Cloud Basics",
       "description": "Explain cloud architecture models.",
       "points": 100,
@@ -130,7 +130,7 @@ export default [
       "course": "5801"
     },
     {
-      "asn_id": "a11",
+      "_id": "a11",
       "name": "Assignment 2: Deploying to Cloud",
       "description": "Deploy an application on AWS or Azure.",
       "points": 150,
@@ -143,7 +143,7 @@ export default [
       "course": "5801"
     },
     {
-      "asn_id": "a12",
+      "_id": "a12",
       "name": "Assignment 3: Cloud Security",
       "description": "Discuss security considerations in cloud computing.",
       "points": 200,
@@ -156,7 +156,7 @@ export default [
       "course": "5801"
     },
     {
-      "asn_id": "a13",
+      "_id": "a13",
       "name": "Assignment 1: Object-Oriented Design",
       "description": "Create a small project demonstrating OOP principles.",
       "points": 100,
@@ -169,7 +169,7 @@ export default [
       "course": "5010"
     },
     {
-      "asn_id": "a14",
+      "_id": "a14",
       "name": "Assignment 2: Advanced OOP Concepts",
       "description": "Demonstrate inheritance and polymorphism in a project.",
       "points": 150,
@@ -182,7 +182,7 @@ export default [
       "course": "5010"
     },
     {
-      "asn_id": "a15",
+      "_id": "a15",
       "name": "Assignment 3: Design Patterns",
       "description": "Implement common design patterns in a project.",
       "points": 200,
