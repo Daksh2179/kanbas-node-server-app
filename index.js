@@ -1,4 +1,4 @@
-import Hello from './hello.js'
+import Hello from './Hello.js'
 import express from 'express'
 import Lab5 from './Lab5/index.js'
 import UserRoutes from './Kanbas/Users/routes.js'
