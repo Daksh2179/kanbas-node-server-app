@@ -11,12 +11,16 @@ import EnrollmentsRoutes from './Kanbas/Enrollments/routes.js';
 import AssignmentRoutes from './Kanbas/Assignment/routes.js';
 
 const app = express();
-app.use(
+
+const allowedOrigin = process.env.NODE_ENV === 'production' 
+  ? process.env.NETLIFY_URL  // Production URL from environment variable
+  : "http://localhost:3000";  // Local development URL
+  app.use(
     cors({
       credentials: true,
-      origins: process.env.NETLIFY_URL || "http://localhost:3000",
+      origin: allowedOrigin,  // Dynamic origin based on environment
     })
-);
+  );
 
 const sessionOptions = {
     secret: process.env.SESSION_SECRET || "kanbas",
