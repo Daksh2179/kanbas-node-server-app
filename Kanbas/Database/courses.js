@@ -8,7 +8,7 @@ export default [
       "department": "CS",
       "credits": 3,
       "description": "This Front-End Developer Course offers a comprehensive exploration of the React.js framework and modern web development techniques. Participants will delve into the essential concepts of React, including component-based architecture, state management, and lifecycle methods. The curriculum covers advanced topics such as hooks, context API, and routing, building responsive and accessible user interfaces.",
-      "image": "reactjs.webp"
+      "image": "/images/reactjs.webp"
     },
     {
       "_id": "5610",
@@ -19,7 +19,7 @@ export default [
       "department": "CS",
       "credits": 3,
       "description": "Full Stack software developer course covering both front-end and back-end technologies for web application development.",
-      "image": "webdev.jpg"
+      "image": "/images/webdev.jpg"
 
     },
     {
@@ -31,7 +31,7 @@ export default [
       "department": "CS",
       "credits": 4,
       "description": "This Game Developer Course provides an extensive examination of game design principles, game engines, and the development of interactive entertainment.",
-      "image": "gaming.jpg"
+      "image": "/images/gaming.jpg"
 
     },
     {
@@ -43,7 +43,7 @@ export default [
       "department": "CS",
       "credits": 3,
       "description": "This Cloud Solutions Architect Course offers a thorough exploration of cloud computing concepts, services, and implementation strategies. Participants will gain a solid understanding of the foundational principles of cloud architecture, including the various deployment models.",
-      "image": "cloud.jpg"
+      "image": "/images/cloud.jpg"
 
     },
     {
@@ -55,7 +55,7 @@ export default [
       "department": "CS",
       "credits": 4,
       "description": "This Object-Oriented Programmer Course offers an in-depth exploration of various programming paradigms, focusing on object-oriented design and implementation. Participants will learn the foundational principles of object-oriented programming (OOP), including encapsulation, inheritance, polymorphism, and abstraction, while also comparing these concepts to procedural and functional programming.",
-      "image": "pdplogo.png"
+      "image": "/images/pdplogo.png"
     },
     {
       "_id": "5890",
@@ -66,7 +66,7 @@ export default [
       "department": "CS",
       "credits": 3,
       "description": "This AI Prompt Engineer/AI Engineer Course provides a comprehensive overview of both fundamental and advanced concepts in artificial intelligence and machine learning. Participants will explore key topics such as supervised and unsupervised learning, natural language processing, computer vision, and neural networks.",
-      "image": "ai.jpg"
+      "image": "/images/ai.jpg"
     },
     {
       "_id": "5900",
@@ -77,7 +77,7 @@ export default [
       "department": "CS",
       "credits": 3,
       "description": "This Data Scientist / ML Engineer Course focuses on machine learning algorithms, data analysis, and predictive modeling techniques. Participants will explore a wide range of machine learning methods, including regression, classification, clustering, and ensemble techniques, as well as their practical applications in real-world scenarios.",
-      "image": "ml.jpg"
+      "image": "/images/ml.jpg"
     },
     {
       "_id": "6150",
@@ -88,6 +88,6 @@ export default [
       "department": "CS",
       "credits": 4,
       "description": "This iOS and Android Developer Course covers comprehensive mobile application development for both major platforms. Participants will explore the fundamentals of app design and development, learning to create intuitive and engaging user experiences tailored to iOS and Android devices.",
-      "image": "mobile.jpg"
+      "image": "/images/mobile.jpg"
     }
   ]

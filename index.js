@@ -11,31 +11,30 @@ import EnrollmentsRoutes from './Kanbas/Enrollments/routes.js';
 import AssignmentRoutes from './Kanbas/Assignment/routes.js';
 
 const app = express();
-
-const allowedOrigin = process.env.NODE_ENV === 'production' 
-  ? process.env.NETLIFY_URL  // Production URL from environment variable
-  : "http://localhost:3000";  // Local development URL
-  app.use(
+app.use(
     cors({
       credentials: true,
-      origin: allowedOrigin,  // Dynamic origin based on environment
+      origin: process.env.NETLIFY_URL || "http://localhost:3000",
     })
-  );
+);
+
 
 const sessionOptions = {
     secret: process.env.SESSION_SECRET || "kanbas",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV !== "development", // Secure cookies in production
+        sameSite: process.env.NODE_ENV !== "development" ? "none" : "lax",
+      },
 };
 
 if (process.env.NODE_ENV !== "development") {
-    sessionOptions.proxy = true;
-    sessionOptions.cookie = {
-        sameSite: "none",
-        secure: true,
-    domain: process.env.NODE_SERVER_DOMAIN,
-    };
-}
+    app.set("trust proxy", 1);
+    sessionOptions.cookie = { ...sessionOptions.cookie, domain: process.env.NODE_SERVER_DOMAIN };
+  }
+  
 app.use(session(sessionOptions));
 app.use(express.json());
   
