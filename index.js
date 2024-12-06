@@ -1,7 +1,9 @@
 import Hello from './Hello.js';
+import "dotenv/config";
 import express from 'express';
+import mongoose from "mongoose";
 import Lab5 from './Lab5/index.js';
-import UserRoutes from './Kanbas/Users/routes.js';
+import UsersRoutes from './Kanbas/Users/routes.js';
 import cors from "cors";
 import session from "express-session";
 import "dotenv/config";
@@ -9,7 +11,9 @@ import CourseRoutes from './Kanbas/Courses/routes.js';
 import ModuleRoutes from "./Kanbas/Modules/routes.js";
 import EnrollmentsRoutes from './Kanbas/Enrollments/routes.js';
 import AssignmentRoutes from './Kanbas/Assignment/routes.js';
-
+//mongodb+srv://daksh:lpDPbdoJJQMrMQWT@kanbas.ww8di.mongodb.net/
+const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
+mongoose.connect(CONNECTION_STRING);
 const app = express();
 app.use(
   cors({
@@ -51,8 +55,8 @@ const sessionOptions = {
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV !== "development", // Secure cookies in production
-        sameSite: process.env.NODE_ENV !== "development" ? "none" : "lax",
+        secure: process.env.NODE_ENV !== "production", // Secure cookies in production
+        sameSite: process.env.NODE_ENV !== "production" ? "none" : "lax",
       },
 };
 
@@ -66,7 +70,7 @@ app.use(express.json());
   
 Hello(app);
 Lab5(app);
-UserRoutes(app);
+UsersRoutes(app);
 CourseRoutes(app);
 ModuleRoutes(app);
 EnrollmentsRoutes(app);
