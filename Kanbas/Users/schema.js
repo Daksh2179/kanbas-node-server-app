@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
-const userSchema = new mongoose.Schema({
+
+const userSchema = new mongoose.Schema(
+  {
+    _id: {
+      type: String,
+      default: () => new mongoose.Types.ObjectId().toString(),
+    },
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     firstName: String,
@@ -18,4 +24,5 @@ const userSchema = new mongoose.Schema({
   },
   { collection: "users" }
 );
+
 export default userSchema;
