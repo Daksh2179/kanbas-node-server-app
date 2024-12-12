@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: process.env.NETLIFY_URL || "http://localhost:3000",
+    origin: process.env.NETLIFY_URL || "https://joyful-marigold-1d79fc.netlify.app",
   })
 );
 
@@ -35,7 +35,7 @@ if (process.env.NODE_ENV !== "development") {
   sessionOptions.cookie = {
     sameSite: "none",
     secure: true,
-    domain: process.env.NODE_SERVER_DOMAIN,
+    domain: process.env.NODE_SERVER_DOMAIN||'http://localhost:4000',
   };
 }
 app.use(session(sessionOptions));
